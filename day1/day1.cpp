@@ -6,6 +6,7 @@
 using namespace std;
 
 int part1(ifstream *data);
+int getFirstNumber(string line);
 
 int main()
 {
@@ -22,40 +23,23 @@ int part1(ifstream *data)
     int dataSum = 0;
     while (getline(*data, line))
     {
-        int lineValue = 0;
-        bool found = false;
-        for (string::iterator iter = line.begin(); iter != line.end(); ++iter)
-        {
-            int characterValue = (int)*iter - 48;
-            if (characterValue >= 0 && characterValue <= 9)
-            {
-                lineValue += (characterValue * 10);
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
-            cout << "Not found start: " << line << endl;
-        }
-        found = false;
+        int lineValue = 10 * getFirstNumber(line);
         reverse(line.begin(), line.end());
-        for (string::iterator iter = line.begin(); iter != line.end(); ++iter)
-        {
-            int characterValue = (int)*iter - 48;
-            if (characterValue >= 0 && characterValue <= 9)
-            {
-                lineValue += characterValue;
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
-            cout << "Not found ends: " << line << endl;
-        }
-        // cout << "Found number: " << lineValue << endl;
+        lineValue += getFirstNumber(line);
         dataSum += lineValue;
     }
     return dataSum;
+}
+
+int getFirstNumber(string line)
+{
+    for (string::iterator iter = line.begin(); iter != line.end(); ++iter)
+    {
+        int characterValue = (int)*iter - 48;
+        if (characterValue >= 0 && characterValue <= 9)
+        {
+            return characterValue;
+        }
+    }
+    return -1;
 }
