@@ -12,21 +12,22 @@ int part1(ifstream &data);
 int part2(ifstream &data);
 string makeNumeric(string line);
 int getFirstNumber(string line);
+void print_result(string msg, int actual, int expected);
 
 int main()
 {
-    ifstream Testdata("test-data");
-    ifstream Data("data");
+    ifstream Testdata("day1-test-data");
+    ifstream Data("day1-data");
     int calibration;
     calibration = part1(Testdata);
-    cout << "P1 Test calibration was: " << calibration << ". Expected: " << 142 << endl;
+    print_result("P1 test:   ", calibration, 142);
     calibration = part1(Data);
-    cout << "P1 Calibration was: " << calibration << ". Expected: " << 53194 << endl;
+    print_result("P1 actual: ", calibration, 53194);
 
     calibration = part2(Testdata);
-    cout << "P2 Test calibration was: " << calibration << endl;
+    print_result("P2 test:   ", calibration, 142);
     calibration = part2(Data);
-    cout << "P2 Calibration was: " << calibration << endl;
+    print_result("P2 actual: ", calibration, 54249);
 }
 int part1(ifstream &data)
 {
@@ -96,4 +97,15 @@ int getFirstNumber(string line)
         }
     }
     return -1;
+}
+
+void print_result(string msg, int actual, int expected)
+{
+    cout << msg << "Actual " << actual << " Expected " << expected;
+    int diff = actual - expected;
+    if (diff != 0)
+    {
+        cout << " Diff " << diff;
+    }
+    cout << endl;
 }
