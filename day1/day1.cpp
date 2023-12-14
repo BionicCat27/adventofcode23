@@ -19,9 +19,9 @@ int main()
     ifstream Data("data");
     int calibration;
     calibration = part1(Testdata);
-    cout << "Test calibration was: " << calibration << ". Expected: " << 142 << endl;
+    cout << "P1 Test calibration was: " << calibration << ". Expected: " << 142 << endl;
     calibration = part1(Data);
-    cout << "Calibration was: " << calibration << ". Expected: " << 53194 << endl;
+    cout << "P1 Calibration was: " << calibration << ". Expected: " << 53194 << endl;
 
     calibration = part2(Testdata);
     cout << "P2 Test calibration was: " << calibration << endl;
