@@ -19,7 +19,6 @@ int main()
             if (characterValue >= 0 && characterValue <= 9)
             {
                 lineValue += (characterValue * 10);
-                cout << "Found first char: " << lineValue << endl;
                 break;
             }
         }
@@ -29,14 +28,12 @@ int main()
             if (characterValue >= 0 && characterValue <= 9)
             {
                 lineValue += characterValue;
-                cout << "Found second char: " << lineValue << endl;
                 break;
             }
         }
+        cout << "Found number: " << lineValue << endl;
         dataSum += lineValue;
     }
     cout << "Count was " << dataSum << endl;
-    cout << "Press any key to exit" << endl;
-    cin >> line;
     return 0;
 }
