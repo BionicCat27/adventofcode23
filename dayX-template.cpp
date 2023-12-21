@@ -4,23 +4,27 @@
 
 using namespace std;
 
-int part1(ifstream &data);
+int part1(string filename);
 void print_result(string msg, int actual, int expected);
 
 int main()
 {
-    ifstream Testdata("dayX-test-data");
-    ifstream Data("dayX-data");
-    int calibration;
-    calibration = part1(Testdata);
-    print_result("P1 test:   ", calibration, 0);
-    calibration = part1(Data);
-    print_result("P1 actual: ", calibration, 2);
+    int result;
+    result = part1("dayX-test-data");
+    print_result("P1 test:   ", result, 0);
+    result = part1("dayX-data");
+    print_result("P1 actual: ", result, 2);
 }
 
-int part1(ifstream &data)
+int part1(string filename)
 {
-    return -1;
+    ifstream data(filename);
+    int result = 0;
+    string line;
+    while (getline(data, line))
+    {
+    }
+    return result;
 }
 
 void print_result(string msg, int actual, int expected)
