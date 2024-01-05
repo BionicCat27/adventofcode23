@@ -13,7 +13,7 @@ int main()
     result = part1("day3-test-data");
     print_result("P1 test:   ", result, 4361);
     // result = part1("day3-data");
-    // print_result("P1 actual: ", result, 2);
+    print_result("P1 actual: ", result, 2);
 }
 
 int part1(string filename)
@@ -64,7 +64,7 @@ int part1(string filename)
                     {
                         if (!isdigit(*lookbehind) && *lookbehind != '.')
                         {
-                            cout << "Found valid part (line above)" << endl;
+                            cout << "Found valid part (line above): " << partnum << endl;
                             result += stoi(partnum);
                             partfound = true;
                             break;
@@ -73,12 +73,12 @@ int part1(string filename)
                     }
                 }
                 string::iterator lookahead = currentLine;
-                if (distance(lookahead, fullLine.end()) > 0)
+                if (distance(lookahead, fullLine.end()) > 0 && !partfound)
                 {
-                    lookahead += 1;
+                    cout << "Looking at " << *lookahead << endl;
                     if (!isdigit(*lookahead) && *lookahead != '.')
                     {
-                        cout << "Found valid part! " << partnum << endl;
+                        cout << "Found valid part (right): " << partnum << endl;
                         result += stoi(partnum);
                         partfound = true;
                     }
@@ -88,12 +88,12 @@ int part1(string filename)
                 difference = index % linelength;
                 if (quotient > 0 && !partfound)
                 {
-                    lookahead += linelength - partnum.length() - 2;
+                    lookahead += linelength - partnum.length() - 1;
                     for (int i = 0; i < partnum.length() + 2; i++)
                     {
                         if (!isdigit(*lookahead) && *lookahead != '.')
                         {
-                            cout << "Found valid part (line below)" << endl;
+                            cout << "Found valid part (line below): " << partnum << endl;
                             result += stoi(partnum);
                             partfound = true;
                             break;
