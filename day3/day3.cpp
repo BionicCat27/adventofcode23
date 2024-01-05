@@ -5,6 +5,7 @@
 using namespace std;
 
 int part1(string filename);
+int part2(string filename);
 void print_result(string msg, int actual, int expected);
 
 int main()
@@ -14,6 +15,11 @@ int main()
     print_result("P1 test:   ", result, 4361);
     result = part1("day3-data");
     print_result("P1 actual: ", result, 531561);
+
+    result = part2("day3-test-data");
+    print_result("P2 test:   ", result, 467835);
+    result = part2("day3-data");
+    print_result("P2 actual: ", result, -1);
 }
 
 int part1(string filename)
@@ -121,6 +127,19 @@ int part1(string filename)
     }
 
     return result;
+}
+
+int part2(string filename)
+{
+    ifstream data(filename);
+    int result = 0;
+    string line;
+    getline(data, line);
+    string fullLine = line;
+    int linelength = line.length();
+    cout << "Line length is " << linelength << endl;
+    cout << "Received line: " << line << endl;
+    return -1;
 }
 
 void print_result(string msg, int actual, int expected)
