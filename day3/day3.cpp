@@ -71,6 +71,36 @@ int part1(string filename)
                         lookbehind++;
                     }
                 }
+                string::iterator lookahead = currentLine;
+                if (distance(lookahead, fullLine.end()) > 0)
+                {
+                    lookahead += 1;
+                    if (!isdigit(*lookahead) && *lookahead != '.')
+                    {
+                        cout << "Found valid part! " << partnum << endl;
+                        result += stoi(partnum);
+                        partfound = true;
+                    }
+                }
+                index = distance(fullLine.begin(), currentLine);
+                quotient = index / linelength;
+                difference = index % linelength;
+                if (quotient > 0 && !partfound)
+                {
+                    lookahead += linelength - partnum.length() - 2;
+                    for (int i = 0; i < partnum.length() + 2; i++)
+                    {
+                        cout << "Looking at " << *lookahead << endl;
+                        if (!isdigit(*lookahead) && *lookahead != '.')
+                        {
+                            cout << "Found valid part (line below)" << endl;
+                            result += stoi(partnum);
+                            partfound = true;
+                            break;
+                        }
+                        lookahead++;
+                    }
+                }
                 partnum = "";
             }
         }
