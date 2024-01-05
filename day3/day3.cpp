@@ -12,8 +12,8 @@ int main()
     int result;
     result = part1("day3-test-data");
     print_result("P1 test:   ", result, 4361);
-    // result = part1("day3-data");
-    print_result("P1 actual: ", result, 2);
+    result = part1("day3-data");
+    print_result("P1 actual: ", result, 531561);
 }
 
 int part1(string filename)
