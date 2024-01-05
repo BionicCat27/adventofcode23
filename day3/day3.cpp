@@ -49,7 +49,7 @@ int part1(string filename)
                     lookbehind -= 1;
                     if (!isdigit(*lookbehind) && *lookbehind != '.')
                     {
-                        cout << "Found valid part! " << partnum << endl;
+                        cout << "Found valid part (left) " << partnum << endl;
                         result += stoi(partnum);
                         partfound = true;
                     }
@@ -67,6 +67,7 @@ int part1(string filename)
                             cout << "Found valid part (line above)" << endl;
                             result += stoi(partnum);
                             partfound = true;
+                            break;
                         }
                         lookbehind++;
                     }
@@ -82,7 +83,7 @@ int part1(string filename)
                         partfound = true;
                     }
                 }
-                index = distance(fullLine.begin(), currentLine);
+                index = distance(currentLine, fullLine.end());
                 quotient = index / linelength;
                 difference = index % linelength;
                 if (quotient > 0 && !partfound)
@@ -90,7 +91,6 @@ int part1(string filename)
                     lookahead += linelength - partnum.length() - 2;
                     for (int i = 0; i < partnum.length() + 2; i++)
                     {
-                        cout << "Looking at " << *lookahead << endl;
                         if (!isdigit(*lookahead) && *lookahead != '.')
                         {
                             cout << "Found valid part (line below)" << endl;
@@ -112,7 +112,7 @@ int part1(string filename)
         {
             if (partnum.length() > 0)
             {
-                cout << "Part number must be valid: " << partnum << endl;
+                cout << "Found valid part (right): " << partnum << endl;
                 result += stoi(partnum);
                 partnum = "";
             }
