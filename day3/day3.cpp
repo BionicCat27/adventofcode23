@@ -60,9 +60,14 @@ int part1(string filename)
                 if (quotient > 0 && !partfound)
                 {
                     lookbehind -= linelength;
-                    for (int i = 0; i < linelength; i++)
+                    for (int i = 0; i < partnum.length() + 2; i++)
                     {
-
+                        if (!isdigit(*lookbehind) && *lookbehind != '.')
+                        {
+                            cout << "Found valid part (line above)" << endl;
+                            result += stoi(partnum);
+                            partfound = true;
+                        }
                         lookbehind++;
                     }
                 }
